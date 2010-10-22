@@ -1,0 +1,11 @@
+#user_nav {
+	float:right;
+	font-size:12px;
+}
+
+#flash_notice {
+	background: green;
+	color: white;
+	padding: 0.8em;
+	width: 200px;
+}

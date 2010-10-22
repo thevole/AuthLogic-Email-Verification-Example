@@ -1,4 +1,7 @@
 class ThingsController < ApplicationController
+  
+  before_filter :authorize, :except => [:index]
+  
   # GET /things
   # GET /things.xml
   def index

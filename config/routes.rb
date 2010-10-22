@@ -1,5 +1,18 @@
 Clientdemo::Application.routes.draw do
+  get "user_verifications/show"
+
+  resources :user_sessions
+
+  resources :users, :only => [:new, :edit, :update, :create, :delete]
+
   resources :things
+  
+  resources :password_resets, :except => [:destroy, :index, :show ]
+  
+  resources :user_verifications, :only => [:show]
+  
+  match 'login' => 'user_sessions#new'
+  match 'logout' => 'user_sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -51,7 +64,9 @@ Clientdemo::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
-
+  
+  root :to => "things#index"
+  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
